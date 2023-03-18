@@ -2,6 +2,7 @@ pipeline {
   environment {
     dockerimagename = "praveensingam1994/nodeapp"
     dockerImage = ""
+  
   }
   
   agent any
@@ -37,6 +38,15 @@ pipeline {
                  build job: "Sonar_Project", wait: true
                     }
                 }
+    
+    stage('SonarQube analysis') {
+    steps {
+        withSonarQubeEnv('SonarQube Server') {
+            sh 'docker run --rm -e SONAR_HOST_URL=http://34.201.241.166:9000 -e SONAR_LOGIN=MNYHILdg7TqhC7T8Kil/DJTY7AV2fSukvuvzMXwotZ8= -v $(pwd):/usr/src -w /usr/src dockerimagename sonar-scanner'
+        }
+    }
+}
+
 
 //     stage('Pushing Image') {
 //       environment {
