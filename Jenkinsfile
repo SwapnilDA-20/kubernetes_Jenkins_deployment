@@ -1,6 +1,6 @@
 pipeline {
   environment {
-    dockerimagename = "praveensingam1994/nodeapp"
+    dockerimagename = "nilapp20/nodeapp"
     dockerImage = ""
   
   }
@@ -11,7 +11,7 @@ pipeline {
 
 //     stage('Checkout Source') {
 //       steps {
-//         git 'https://github.com/praveen1994dec/kubernetes_Jenkins_deployment.git'
+//         git 'https://github.com/SwapnilDA-20/kubernetes_Jenkins_deployment.git'
 //       }
 //     }
         
@@ -39,17 +39,8 @@ pipeline {
                     }
                 }
     
-    stage('SonarQube analysis') {
-    steps {
-        withSonarQubeEnv('SonarQube Server') {
-            sh 'docker run --rm -e SONAR_HOST_URL=http://34.201.241.166:9000 -e SONAR_LOGIN=MNYHILdg7TqhC7T8Kil/DJTY7AV2fSukvuvzMXwotZ8= -v $(pwd):/usr/src -w /usr/src dockerimagename sonar-scanner'
-        }
-    }
-}
-
-
-//     stage('Pushing Image') {
-//       environment {
+    //     stage('Pushing Image') {
+//          environment {
 //                registryCredential = 'dockerhubcred'
 //            }
 //       steps{
@@ -61,6 +52,17 @@ pipeline {
 //         }
 //       }
 //     }
+    
+ //   stage('SonarQube analysis') {
+ //   steps {
+ //       withSonarQubeEnv('SonarQube Server') {
+ //           sh 'docker run --rm -e SONAR_HOST_URL=http://34.201.241.166:9000 -e SONAR_LOGIN=MNYHILdg7TqhC7T8Kil/DJTY7AV2fSukvuvzMXwotZ8= -v $(pwd):/usr/src -w /usr/src dockerimagename sonar-scanner'
+ //       }
+ //   }
+// }
+
+
+
 
 //     stage('Deploying App to Kubernetes') {
 //       steps {
